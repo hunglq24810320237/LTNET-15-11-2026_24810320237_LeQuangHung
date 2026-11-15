@@ -1,0 +1,3 @@
+using LibraryManager.DAL;
+namespace LibraryManager.BUS;
+public sealed class LibraryService{public LibraryRepository Data{get;}=new();public void ValidateBook(string title,string genre,int stock){if(string.IsNullOrWhiteSpace(title)||string.IsNullOrWhiteSpace(genre))throw new InvalidOperationException("Nhập tên sách và thể loại.");if(stock<0)throw new InvalidOperationException("Số lượng không thể âm.");}public void ValidateReader(string name,string email){if(string.IsNullOrWhiteSpace(name)||!email.Contains('@'))throw new InvalidOperationException("Nhập họ tên và email hợp lệ.");}public void ValidateBorrow(int reader,int book,int qty,int days){if(reader<=0||book<=0||qty<=0||days<=0)throw new InvalidOperationException("Chọn độc giả, sách và số lượng/hạn trả hợp lệ.");}}
